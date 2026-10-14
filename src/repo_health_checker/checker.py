@@ -13,6 +13,7 @@ def check_repository(repo_path):
     for filename in required_files:
         results[filename] = (repo / filename).is_file()
 
+    results["src/"] = (repo / "src").is_dir()
     results["tests/"] = (repo / "tests").is_dir()
 
     return results
