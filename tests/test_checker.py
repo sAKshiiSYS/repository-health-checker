@@ -6,6 +6,7 @@ def test_check_repository_finds_existing_files(tmp_path):
     (tmp_path / "README.md").touch()
     (tmp_path / ".gitignore").touch()
     (tmp_path / "tests").mkdir()
+    (tmp_path / "tests" / "test_example.py").touch()
     (tmp_path / "src").mkdir()
 
     results = check_repository(tmp_path)
@@ -25,3 +26,14 @@ def test_check_repository_detects_missing_src(tmp_path):
     results = check_repository(tmp_path)
 
     assert results["src/"] is False
+
+
+def test_check_repository_detects_empty_tests_directory(tmp_path):
+    (tmp_path / "README.md").touch()
+    (tmp_path / ".gitignore").touch()
+    (tmp_path / "src").mkdir()
+    (tmp_path / "tests").mkdir()
+
+    results = check_repository(tmp_path)
+
+    assert results["tests/"] is False
