@@ -1,13 +1,15 @@
 # Repository Health Checker
 
-A beginner-friendly Python tool that checks the basic health of a software repository.
+A beginner-friendly Python tool that checks the basic health of a software repository by looking for important files and directories and calculating a health score.
 
 ## Features
 
 - Checks whether `README.md` exists.
 - Checks whether `LICENSE` exists.
 - Checks whether `.gitignore` exists.
-- Checks whether a `tests/` directory exists.
+- Checks whether the `src/` directory exists.
+- Checks whether the `tests/` directory exists and is non-empty.
+- Lists missing files and directories in the report.
 - Displays a repository health score based on the checks passed.
 
 ## Requirements
@@ -54,8 +56,12 @@ repository-health-checker/
 │       ├── cli.py
 │       └── checker.py
 ├── tests/
-│   └── test_checker.py
+│   ├── test_checker.py
+│   └── test_cli.py
+├── .gitignore
+├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
+├── LICENSE
 ├── pyproject.toml
 └── README.md
 ```
