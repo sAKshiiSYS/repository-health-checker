@@ -20,13 +20,26 @@ def main():
         status = "FOUND" if exists else "MISSING"
         print(f"{filename}: {status}")
 
+    missing_items = [
+        filename
+        for filename, exists in results.items()
+        if not exists
+    ]
+
+    print("-" * 30)
+
+    if missing_items:
+        print("Missing items: " + ", ".join(missing_items))
+    else:
+        print("Great job! All checks passed.")
+
     found = sum(results.values())
     total = len(results)
     score = (found / total) * 100 if total else 0
 
-    print("-" * 30)
     print(f"Health score: {score:.0f}% ({found}/{total} checks passed)")
 
 
 if __name__ == "__main__":
     main()
+
